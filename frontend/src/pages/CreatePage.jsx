@@ -22,7 +22,7 @@ export default function CreatePage() {
         setLoading(true);
 
         try {
-            await axios.post("https://thinkboard-backend.onrender.com/api/notes", {
+            await axios.post("https://mern-thinkboard-3r9b.onrender.com/api/notes", {
                 title,
                 content,
             });

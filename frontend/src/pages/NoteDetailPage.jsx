@@ -15,7 +15,7 @@ export default function NoteDetailPage() {
     useEffect(() => {
         const fetchNote = async () => {
             try {
-                const res = await axios.get(`https://thinkboard-backend.onrender.com/api/notes/${id}`);
+                const res = await axios.get(`https://mern-thinkboard-3r9b.onrender.com/api/notes/${id}`);
                 setNote(res.data);
             } catch (error) {
                 console.log("Error in fetching note", error);
@@ -31,7 +31,7 @@ export default function NoteDetailPage() {
         if (!window.confirm("Are you sure you want to delete this note?")) return;
 
         try {
-            await axios.delete(`https://thinkboard-backend.onrender.com/api/notes/${id}`);
+            await axios.delete(`https://mern-thinkboard-3r9b.onrender.com/api/notes/${id}`);
             toast.success("Note deleted successfully");
             navigate("/");
         } catch (error) {
@@ -49,7 +49,7 @@ export default function NoteDetailPage() {
         setSaving(true);
 
         try {
-            await axios.put(`https://thinkboard-backend.onrender.com/api/notes/${id}`, {
+            await axios.put(`https://mern-thinkboard-3r9b.onrender.com/api/notes/${id}`, {
                 title: note.title,
                 content: note.content,
             });

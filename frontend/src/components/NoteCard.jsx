@@ -8,7 +8,7 @@ export default function NoteCard({note, setNotes}){
     e.preventDefault();
     if(!window.confirm("Are you sure you want to delete this note?")) return;
     try{
-    await axios.delete(`https://thinkboard-backend.onrender.com/api/notes/${id}`);
+    await axios.delete(`https://mern-thinkboard-3r9b.onrender.com/api/notes/${id}`);
     setNotes((prev) => prev.filter(note => note._id !== id))
     toast.success("Note deleted successfully");
     } catch(error){
