@@ -1,41 +1,40 @@
 import { ArrowLeftIcon } from "lucide-react";
-import react from "react";
+import { useState } from "react";
+import axios from "axios";
 import toast from "react-hot-toast";
 import { Link, useNavigate } from "react-router";
-import axios from "axios";
 
 export default function CreatePage() {
-    const [title, setTitle] = react.useState("");
-    const [content, setContent] = react.useState("");
-    const [loading, setLoading] = react.useState(false);
+    const [title, setTitle] = useState("");
+    const [content, setContent] = useState("");
+    const [loading, setLoading] = useState(false);
 
-  const navigate = useNavigate()
+    const navigate = useNavigate();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        
-        if(!title || !content.trim()){
-            toast.error("All fields are required")
-            return
+
+        if (!title || !content.trim()) {
+            toast.error("All fields are required");
+            return;
         }
 
-        setLoading(true)
+        setLoading(true);
 
-        try{
-          await axios.post("http://localhost:5001/api/notes", {
-            title,
-            content
-          })
-          toast.success("Note created successfully!")
-          navigate("/")
-        } catch(error){
-            console.log("Error creating note", error)
-           toast.error("Failed to create note")
-        } finally{
-            setLoading(false)
+        try {
+            await axios.post("https://thinkboard-backend.onrender.com/api/notes", {
+                title,
+                content,
+            });
+            toast.success("Note created successfully!");
+            navigate("/");
+        } catch (error) {
+            console.log("Error creating note", error);
+            toast.error("Failed to create note");
+        } finally {
+            setLoading(false);
         }
     };
-
 
     return (
         <div className="min-h-screen bg-base-200">
